@@ -1,0 +1,19 @@
+
+<div>
+	<%= form_for :conversation, url: :conversations do |f| %>
+		<%#=f.text_field :recipients%>
+		<%=f.label :to%>
+		<%if @goalers%>
+			<%=f.select("recipients", options_for_select(@goalers.map {|u| u.email}))%><br/>
+		<%else%>
+			<%=f.text_field "recipients", value: current_user.mentor.email%>
+			<br/>
+		<%end%>
+		<%=f.label :subject%> :
+		<%=f.text_field :subject%><br/>
+		<%=f.label :body%> :
+		<%=f.text_area :body%><br/>		
+		<%= f.submit  "send" %>
+		<%=submit_tag 'Cancel', type: :reset, class: 'btn btn-danger'%>
+	<%end%>
+</div>

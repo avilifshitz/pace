@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+ <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+ <%= csrf_meta_tags %>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8"> 
+  <meta http-equiv="expires" content="0"> 
+  <title>- :: PACE :: -</title> 
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link href="/admin/css/stylesheet.css" rel="stylesheet" type="text/css" /> 
+  <link href="/admin/sdmenu/sdmenu.css" rel="stylesheet" type="text/css" /> 
+   
+  <!-- <noscript> 
+    <h2>This web site needs javascript activated to work properly. Please activate it. Thanks!</h2> 
+  </noscript>  -->
+</head> 
+<body> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+  <tr> 
+    <td valign="top" class="main-bg"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+      <tr> 
+        <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+          <tr> 
+            <td valign="top" class="header-bg"><table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+              <tr> 
+                <td  valign="top"></td> 
+              </tr> 
+              <tr> 
+                <td height="79" valign="middle"><a href="#"></a> 
+                  <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+                    <tr> 
+                      <td valign="top"><h1 style="color:#FFFFFF; font-family:Geneva, Arial, Helvetica, sans-serif;">PACE</h1></td> 
+                      <td align="right"> <h3 style="font-family:Geneva, Arial, Helvetica, sans-serif; font-size: 16px; color:rgb(158, 158, 158); float: right;"> </h3></td> 
+                    </tr> 
+                  </table></td> 
+              </tr> 
+              <tr> 
+                <td height="36" valign="middle"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+                  <tr> 
+                    <td width="45%" align="left" valign="top" class="heading5"><b>
+                      <% if user_signed_in? %>
+                        Signed in as <%= current_user.email %></b> 
+                    </td> 
+                    <td width="55%" align="right" valign="top" colspan="2" class="link3 ">
+                        <%= link_to "Sign out", destroy_user_session_path %>
+                      <% else %>
+                      <td width="55%" align="right" valign="top" colspan="2" class="link3 ">
+                        <%= link_to "Sign In", new_user_session_path %>
+                      <% end %>
+                     </td> 
+                  </tr> 
+                </table></td> 
+              </tr> 
+              <tr> 
+                <td height="30" valign="middle"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+                  <tr> 
+                    <td width="37%" valign="top" class="heading1"></td> 
+                    <td width="63%" align="right" valign="top" class="heading1"></td> 
+                  </tr> 
+                </table></td> 
+              </tr> 
+            </table></td> 
+          </tr> 
+          <tr> 
+            <td class="height8"></td> 
+          </tr> 
+        </table></td> 
+      </tr> 
+      <tr> 
+        <td valign="top" class="header-img5"></td> 
+      </tr> 
+      <tr> 
+        <td valign="top"> 
+ 
+ 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+            <tr> 
+              <td width="225" valign="top" class="blue"> 
+ 
+                <div style="float: right" id="my_menu" class="sdmenu"> 
+                  <!-- *********************************Start Menu****************************** --> 
+ 
+                  <div> 
+                    <span>User Links</span> 
+                    <ul> 
+                      <% if user_signed_in?%>
+                      <li> 
+                        <%= link_to "Home", dashboard_path %>
+                      </li>
+                      <li> 
+                        <%= link_to "edit profile", edit_user_registration_path %>
+                      </li> 
+                      <li> 
+                        <%= link_to "Mailbox", conversations_path %>
+                      </li>  
+                      <li> 
+                        <%= link_to "start conversations", new_conversation_path %>
+                      </li> 
+                      <% else %>
+                      <li> 
+                        <a href="#" title="Content Manager">Content Manager</a> 
+                      </li>
+                      <%end%>
+                    </ul> 
+                  </div> 
+                 </div> 
+              </td> 
+              <td width="5" valign="top">&nbsp;</td> 
+              <td valign="top"><table width="100%" height=100%  border="0" cellspacing="2" cellpadding="2"> 
+                <tr> 
+                  <td valign="top" class="height10"></td> 
+                </tr> 
+                <tr> 
+                  <td valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+                    <tr> 
+                      <td valign="top" class="curve-top-left"></td> 
+                      <td valign="top" class="top-line"></td> 
+                      <td valign="top" class="curve-top-right"></td> 
+                    </tr> 
+                    <tr> 
+                      <td valign="top" class="left-line">&nbsp;</td> 
+                      <td valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+                        <tr> 
+                          <td width="40" valign="top"><img src="/admin/images/record-module.jpg" border="0" width="35" height="46"/></td> 
+                          <td valign="middle" nowrap="nowrap" class="main-heading">User Panel</td> 
+                          <td width="70%" align="right" valign="middle"></td> 
+                        </tr> 
+                      </table></td> 
+                      <td valign="top" class="right-line">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                      <td valign="top" class="curve-bottom-left"></td> 
+                      <td valign="top" class="bottom-line"></td> 
+                      <td valign="top" class="curve-bottom-right"></td> 
+                    </tr> 
+                  </table></td> 
+                </tr> 
+                <tr> 
+                  <td valign="top" class="height5"></td> 
+                </tr> 
+                <tr> 
+                  <td valign="top"> 
+ 					<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td valign="top" class="curve-top-left"></td>
+                      <td valign="top" class="top-line"></td>
+                      <td valign="top" class="curve-top-right"></td>
+                    </tr>
+                    <tr>
+                      <td valign="top" class="left-line">&nbsp;</td>
+                      <td valign="top">
+					    <table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        
+                        <tr>
+                          <td valign="top" class="login-right">&nbsp;</td>
+                          <td valign="middle" class="login-bg"><%= yield %></td>
+                          <td valign="top" class="login-left">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" class="login-bottom-left">&nbsp;</td>
+                          <td valign="middle" class="login-bottom">
+
+
+                          </td>
+                          <td valign="top" class="login-bottom-right">&nbsp;</td>
+                        </tr>
+                      </table></form></td>
+                      <td valign="top" class="right-line">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td valign="top" class="curve-bottom-left"></td>
+                      <td valign="top" class="bottom-line"></td>
+                      <td valign="top" class="curve-bottom-right"></td>
+                    </tr>
+                </table>
+                   
+ 
+                  </td> 
+                </tr> 
+                <tr> 
+                  <td valign="top">&nbsp;</td> 
+                </tr> 
+              </table></td> 
+            </tr> 
+          </table></td> 
+      </tr> 
+    </table> 
+ 
+      <br /> 
+    </td> 
+  </tr> 
+  <tr> 
+    <td valign="top" class="footer-bg"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0"> 
+      <tr> 
+        <td align="center" class="footer-text"><%#= SITE_PATH %></td> 
+      </tr> 
+ 
+    </table></td> 
+  </tr> 
+</table> 
+</body> 
+</html>

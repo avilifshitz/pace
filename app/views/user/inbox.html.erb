@@ -1,0 +1,24 @@
+<h1>Inbox :</h1>
+<div class="container">
+	<div class="message">
+		<p class="notice"><%= notice %></p>
+ 		<p class="alert"><%= alert %></p>
+		<table width='100%'>
+			<tr>
+				<th>sender :</th>
+				<th>subject:</th>
+				<th>message:</th>
+			<tr>
+	</div>
+		<%if @recieved.present? %>
+			<% @recieved.each do |r| %>
+				<tr>
+					<td align='center'><%= r.sender.email %></td>
+					<td align='center'><%= r.subject %></td>
+					<td align='center'><%= r.body %></td>
+				</tr>
+			<%end%>
+		<%end%>
+	</table>
+	</div>
+</div>

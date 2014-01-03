@@ -1,0 +1,33 @@
+<center>
+  <h1>Set Milestone </h1>
+  <div id="msg" style="color:red;"></div>
+    <%= form_tag miles_path, method: "post" do %>
+		<%= label_tag(:title, "Title") %>
+		<%= text_field_tag(:title) %><br>
+		<%= label_tag(:from, "From :") %>
+		<%= text_field_tag(:from) %><br>
+		<%= label_tag(:to, "To :") %>
+		<%= text_field_tag(:to) %><br>
+    	<%= submit_tag "Next" , :onclick => 'test(); return false;'%>
+	<%end%>
+</center>
+<script>
+	function test()
+	{
+		if ($('#title').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter Title');
+		}else if($('#from').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter From Date');
+		}
+		else if($('#to').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter To Date');
+		}else{
+
+			$$('#new_goal').submit();
+		}
+		
+	}
+	</script>

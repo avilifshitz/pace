@@ -1,0 +1,13 @@
+<h1>Edit Milestone</h1>
+<%= render 'milesfild'%>
+<center>
+    <%#= form_for(@miles, url: update_miles_path ) do |f| %>
+    <%#= f.hidden_field :id, :value => @miles.id %>
+	<td><%#= f.label(:title, "Title") %></td>
+	<td><%#= f.text_field(:title, :value => @miles.title) %></td>
+	<td><%#= f.label(:from, "From :") %></td>
+	<td><%#= f.date_field(:from, :value => @miles.from) %></td>
+	<td><%#= f.label(:to, "To :") %></td>
+	<td><%#= f.date_field(:to, :value => @miles.to) %></td>
+		<td> <%#= f.submit "update"%></td>
+  <%#end%>

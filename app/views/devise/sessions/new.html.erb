@@ -1,0 +1,48 @@
+	<div id="content">
+		<div id="loginmain">
+			<div class="full_w">
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+					<h2>Sign in</h2>
+					<p class="notice" style="color:red;font-size:12px;"><%= notice %></p>
+ 					<p class="alert" style="color:red;font-size:12px;"><%= alert %></p>
+					<label id="msg" style="color:red;display:none;">&nbsp;</label>
+					<label for="login">Email:</label>
+					<div id="login" class="text"><%= f.email_field :email, :autofocus => true %></div>
+					<label for="pass">Password:</label>
+					<div id="pass" class="text"><%= f.password_field :password %></div>
+					<div class="sep">
+						<% if devise_mapping.rememberable? -%>
+    						<div>
+    							<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    						</div>
+  							<% end -%>
+  					</div>
+					<div class="ok"><%= f.submit "Sign in", :onclick =>"test(); return false;"%></div><%= link_to "HOME", root_path %>
+					<% end %>
+						
+				</div>
+			<div class="footer">&raquo;  | Login Panel</div>
+		</div>
+	</div>
+	<script>
+	function test()
+	{
+		if ($('#user_email').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter user Name');
+		}else if($('#user_password').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Password can not be empty');
+		}else{
+			$('#new_user').submit();
+		}
+		
+	}
+	</script>
+
+
+  
+
+  
+
+  

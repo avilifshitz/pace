@@ -1,0 +1,29 @@
+<h1>ALL MENTOR</h1>
+<table>
+	<thead>
+		<tr>
+			<th scope="col">&nbsp;</th>
+			<th scope="col">ID</th>
+			<th scope="col">EMAIL</th>
+			<th scope="col">created at</th>
+			<th scope="col">&nbsp;</th>
+			<th scope="col">Modify</th>
+		</tr>
+	</thead>
+
+		<% @users.each do |user| %>
+	    <tr>
+			<td class="align-center">&nbsp;</td>
+			<td><%= user.id %></td>
+			<td><%= user.email %></td>
+			<td><%= user.created_at%></td>
+			<td>-</td>
+			<td>
+				<%= link_to "Edit" , edit_admin_dashboard_path(user.id) %>
+				<a link_to class="table-icon archive" title="Archive"></a>
+				<%= link_to "Delete", admin_destroy_path(user),data: { confirm: 'Are you sure ?:' }%>
+			</td>
+		</tr>
+			
+			
+	<% end %>

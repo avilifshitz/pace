@@ -1,0 +1,17 @@
+<div>
+	<%= form_tag conversations_path, method: "post" do %>
+		<% if !current_user.is_mentor? %>
+		<div style="color:#ff6666">Send Your Query to Mentor:</div>
+		<%=hidden_field_tag(:id, @mentor.id)%>
+		<% else %>
+		<div style="color:#ff6666">Reply to User:</div>
+		User   :   <%= select("email", "id", @users.collect {|p| [ p.email, p.id ]})%>
+		<% end %><br>
+		<%= label_tag(:subject, "Subject") %>
+		<%= text_field_tag(:subject) %><br>
+		<%= label_tag(:message, "message :") %>
+		<%= text_area_tag(:message) %><br>
+		
+		<%= submit_tag  "send" %>
+	<%end%>
+</div>

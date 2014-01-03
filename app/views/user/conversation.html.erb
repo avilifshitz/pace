@@ -1,0 +1,8 @@
+<%@conversations.each do |conv |%>
+	<div>
+		<b><%=conv.reciever.email%>: </b><%=conv.message%>
+	</div>
+	<div>
+		<b><%=conv.sender.email%>: </b> <%=  %>
+	</div>
+<%end%>

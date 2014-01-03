@@ -1,0 +1,21 @@
+<center>
+<h2>Sign up</h2>
+
+<%= form_for(:user, :url => admin_create_mentor_path, :html => { :method => :post }) do |f| %>
+  <%#= devise_error_messages! %>
+  
+  <div ><%= f.label :email %>
+  <%= f.email_field :email, :autofocus => true %></div>
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div>
+
+  <div style="color:#008888">Make Mentor  <%= f.check_box :is_mentor %> 
+  
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>
+
+<%#= render "devise/shared/links" %>

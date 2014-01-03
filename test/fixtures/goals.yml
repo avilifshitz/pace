@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  from: 2013-12-18 15:23:06
+  to: 2013-12-18 15:23:06
+
+two:
+  title: MyString
+  from: 2013-12-18 15:23:06
+  to: 2013-12-18 15:23:06

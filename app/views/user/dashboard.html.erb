@@ -1,0 +1,87 @@
+<table border=0 align="center" width=100%>
+	<tr>
+		<td colspan=2 align="center"> <%= @user.email %>
+		</td>
+	</tr>
+	<tr bgcolor="#cccccc">
+	  <% if current_user.is_admin? %>
+	  	<center><h1>welcome admin</h1>
+	  <% else %>
+		<td>Goal Title</td>
+		<td><%= @goal.title if @goal.present?%></td>
+	</tr>
+	<tr>
+		<td>Mentor Email : </td>
+		<td><%=@mentor.email if @mentor.present?%></td>
+	
+	</tr>
+	<tr>
+		<td colspan=2>
+			<div id="msg" style="color:red;"></div>
+			<p class="notice"><%= notice %></p>
+ 			<p class="alert"><%= alert %></p>
+			<table border=0 width=100%>
+			  <tr >
+			  	<td colspan=5 align="center" bgcolor="lightgreen"> All Milestones </td>
+			  </tr>
+			  <tr bgcolor="lightgrey">
+		      	<td >SI NO</td>
+		        <td >Title</td>
+		        <td>From</td>
+		        <td>To</td>
+		        <td>Action</td>
+		      </tr>
+		      	<%if @miles.present?%>
+				  	<% @miles.each_with_index do |m,i| %>
+				      <tr bgcolor="lightgrey">
+				      	<td ><%= i=i+1 %></td>
+				        <td ><%= m.title %></td>
+				        <td><%= m.from %></td>
+				        <td><%= m.to %></td>
+				       	<td><%= link_to "Edit" , edit_miles_path(m) %> | <%= link_to 'Destroy', destroy_miles_path(m.id),
+		                    :method=> "delete", data: { confirm: 'Are you sure ?:' }  %></td>
+				       	</tr>
+					<%end%>
+				<%end%>
+				<table border=0>
+					<tr>
+						<%= form_for(:milestone, url: create_miles_path) do |f| %>
+					    <%= f.hidden_field :goal_id, :value => @goal.id if @goal.present?%>
+		    			<td><%= f.label(:title, "Title") %></td>
+		    			<td><%= f.text_field(:title) %></td>
+		    			<td><%= f.label(:from, "From :") %></td>
+		    			<td><%= f.text_field(:from) %></td>
+		    			<td><%= f.label(:to, "To :") %></td>
+		    			<td><%= f.text_field(:to) %></td>
+		   				<td> <%= f.submit "Add New Milestone", :onclick => 'test();return false;'%></td>
+                      <%end%>
+			
+    				</tr>
+    			</table>
+			</table>
+		</td>
+		<%end%>
+	</tr>
+</table>
+
+</center>
+<script>
+	function test()
+	{
+		if ($('#milestone_title').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter Title');
+		}else if($('#milestone_from').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter From Date');
+		}
+		else if($('#milestone_to').val() == ''){
+			$('#msg').show();
+			$('#msg').text('Please Enter To Date');
+		}else{
+
+			$$('#new_milestone').submit();
+		}
+		
+	}
+	</script>

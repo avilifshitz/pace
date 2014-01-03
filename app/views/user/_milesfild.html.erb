@@ -1,0 +1,10 @@
+<%= form_for(:milestone, url: update_miles_path) do |f| %>
+<%= f.hidden_field :id, :value => @miles.id %>
+<%= f.label(:title, "Title") %>
+<%= f.text_field(:title, :value => @miles.title) %>
+<%= f.label(:from, "From :") %>
+<%= f.text_field(:from, :value => @miles.from) %>
+<%= f.label(:to, "To :") %>
+<%= f.text_field(:to, :value => @miles.to) %>
+	 <%= f.submit "update"%>
+<%end%>

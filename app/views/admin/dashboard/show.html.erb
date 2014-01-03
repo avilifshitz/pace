@@ -1,0 +1,36 @@
+<center>
+<h1><%= @user.email %></h1><h3>Mentor ID : </h3>
+<h4>Goal :<%= @goal.title %></h1>
+<table border=0 width=100%>
+			  <tr >
+			  	<td colspan=5 align="center" bgcolor="lightgreen"> All Milestones </td>
+			  </tr>
+			  <tr bgcolor="lightgrey">
+		      	<td >SI NO</td>
+		        <td >Title</td>
+		        <td>From</td>
+		        <td>To</td>
+		        <td>Action</td>
+		      </tr>
+			  	<% @miles.each_with_index do |m,i| %>
+		      <tr bgcolor="lightgrey">
+		      	<td ><%= i=i+1 %></td>
+		        <td ><%= m.title %></td>
+		        <td><%= m.from %></td>
+		        <td><%= m.to %></td>
+		       	<td><%= link_to "Edit" , edit_miles_path(m) %> | <%= link_to 'Destroy', destroy_miles_path(m.id),
+                    :method=> "delete", data: { confirm: 'Are you sure ?:' }  %></td>
+		       	</tr>
+				<% end %>
+				<tr>
+					<td colspan=5>
+						<%= form_for(@user, :url => admin_update_path, :html => { :method => :put }) do |f| %>
+  									<%= f.hidden_field :id , :value => @user.id %>
+    								<div style="color:#008888">Make Mentor  <%= f.check_box :is_mentor, :value => @user.is_mentor %> 
+    								Assign Mentor  <%= f.select :mentor_id, User.where(is_mentor: true).collect {|resource| [ resource.id ] } %> 
+									</div>
+  									<%= f.submit "CHANGE" %>
+								<% end %> 
+					</td>
+				</tr>
+			</table>>

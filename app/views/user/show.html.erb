@@ -1,0 +1,24 @@
+<div style="background-color:#999999; height:100px;">subject :
+<%= @message.subject %>
+</div>
+<div>message:</div>
+<div style="background-color:#dddddd; height:300px;"><%= @message.message %></div>
+<div>
+
+		<%= form_tag conversations_path, method: "post" do %>
+		
+		<% if !current_user.is_mentor? %>
+		<div style="color:#ff6666">Send Your Query to Mentor:</div>
+		<%=hidden_field_tag(:id, @mentor.id)%>
+		<% else %>
+		<div style="color:#ff6666">Reply to User:</div>
+		<%= hidden_field_tag :id , @message.sender_id%>
+		<% end %><br>
+		<%= label_tag(:subject, "Subject") %>
+		<%= text_field_tag(:subject) %><br>
+		<%= label_tag(:message, "message :") %>
+		<%= text_area_tag(:message) %><br>
+		
+		<%= submit_tag  "send" %>
+	<%end%>
+	</div>
